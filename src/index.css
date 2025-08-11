@@ -1,0 +1,169 @@
+/* Global app background & font */
+body {
+  background-color: #228B22; /* grass green */
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  color: white;
+}
+
+/* App wrapper */
+.app-wrap {
+  padding: clamp(6px, 2vw, 16px);
+}
+
+/* Titles */
+.title {
+  font-size: clamp(18px, 5.2vw, 26px);
+  font-weight: 800;
+  margin: 0 0 clamp(4px, 1vw, 10px);
+}
+.week {
+  font-size: clamp(13px, 3.6vw, 16px);
+  margin: 0 0 clamp(8px, 1.6vw, 12px);
+}
+
+/* Progress bar with numbers */
+.progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0 10px;
+}
+.progress {
+  flex: 1 1 auto;
+  height: 8px; /* thin */
+  background: rgba(255,255,255,0.25);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #00c853, #31d67b);
+  width: 0%;
+}
+.progress-number {
+  font-size: 11px;
+  color: #fff;
+  white-space: nowrap;
+  opacity: 0.95;
+}
+
+/* Buttons / nav row */
+.navrow {
+  display: flex;
+  gap: 6px;
+  margin: 10px 0 6px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.btn {
+  background-color: #fffacd; /* light yellow */
+  color: #111;
+  border: 1px solid #e7d98a;
+  border-radius: 10px;
+  padding: clamp(4px, 1.4vw, 8px) clamp(8px, 2vw, 10px);
+  cursor: pointer;
+  font-size: clamp(12px, 3.2vw, 14px);
+}
+.btn:hover { background-color: #ffec8b; }
+.btn.small {
+  padding: clamp(3px, 1.1vw, 6px) clamp(6px, 1.6vw, 8px);
+  font-size: clamp(11px, 3vw, 13px);
+}
+.spacer { display: none; }
+
+/* Workout grid — compact & fluid (3 per row on most iPhones) */
+.workout-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 14px;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(clamp(100px, 28vw, 180px), 1fr)
+  );
+  gap: clamp(6px, 2vw, 16px);
+}
+
+/* Round base cards */
+.workout-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  width: clamp(100px, 28vw, 180px);
+  height: clamp(100px, 28vw, 180px);
+  margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: clamp(4px, 1.5vw, 10px);
+}
+
+/* Name & notes on the card */
+.workout-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.name-red {
+  color: red;
+  font-weight: 700;
+  font-size: clamp(11px, 3.4vw, 16px);
+}
+.note-line {
+  color: #333;
+  font-size: clamp(10px, 2.9vw, 12px);
+  margin-bottom: 4px;
+}
+
+/* Date/timestamp text in brown for readability on white cards */
+.timestamps {
+  color: #8B4513; /* SaddleBrown */
+  font-size: clamp(9px, 2.8vw, 12px);
+  line-height: 1.2;
+}
+.date-brown { color: #8B4513; }
+
+/* Controls on cards */
+.controls {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Log panel (white text) */
+.log-panel {
+  margin-top: clamp(8px, 2vw, 16px);
+  color: #fff;
+}
+.log-panel summary {
+  font-weight: 700;
+  cursor: pointer;
+}
+.log-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(4px, 1.3vw, 6px);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+.log-date { color: #fff; }
+
+/* --- Extra-tight tweaks for small iPhones --- */
+@media (max-width: 430px) {
+  .navrow { gap: 4px; }
+  .btn { border-radius: 8px; }
+
+  .workout-grid { gap: 6px; }
+  .workout-card {
+    width: clamp(104px, 30vw, 160px);
+    height: clamp(104px, 30vw, 160px);
+    padding: 6px;
+  }
+  .name-red { font-size: clamp(11px, 3.2vw, 14px); }
+  .timestamps { font-size: clamp(9px, 2.6vw, 11px); }
+}
